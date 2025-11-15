@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ahmed Raza | Frontend Developer</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!--  Bootstrap Icons CDN  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+
+
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .sidebar {
+      width: 250px;
+      position: fixed;
+      height: 100vh;
+      background: #111;
+      padding: 20px;
+      transition: width 0.3s ease-in-out;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    .sidebar:hover {
+      width: 280px;
+    }
+
+    .sidebar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 15px;
+      object-fit: cover;
+    }
+
+    .nav-link {
+      color: white;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      background: #333;
+      border-radius: 5px;
+      transform: translateX(5px);
+      color: #fff;
+      text-decoration: none;
+      outline: none;
+    }
+
+    .content {
+      margin-left: 270px;
+      padding: 40px 30px;
+      min-height: 100vh;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .animate-card {
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .animate-card:hover,
+    .animate-card:focus {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
+
+    .btn-group>.btn+.btn {
+      margin-left: 1rem;
+    }
+
+    h2 {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .hover-shadow:hover {
+      transform: translateY(-5px);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .progress-bar {
+      transition: width 1.5s ease-in-out;
+      box-shadow: 0 2px 10px rgba(0, 123, 255, 0.5);
+    }
+
+    .skill-title {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #0d6efd;
+    }
+
+    .skill-title svg {
+      margin-right: 8px;
+      fill: #0d6efd;
+      animation: bounce 2s infinite;
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .percent-text {
+      margin-left: auto;
+      font-weight: 600;
+      color: #0d6efd;
+    }
+
+    #skills .container {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    input:focus,
+    textarea:focus {
+      box-shadow: none !important;
+      outline: none !important;
+      border-color: #1e90ff;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+      }
+
+      .sidebar:hover {
+        width: 100%;
+      }
+
+      .content {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Section  -->
+  <nav class="sidebar" aria-label="Primary Navigation">
+    <img src="Professioanl-pic/Ahmed's_Pic.jpeg" alt="Ahmed Raza Profile Picture" />
+    <h3 class="text-center mt-3 mb-4">Ahmed Raza</h3>
+    <ul class="nav flex-column" role="menu">
+      <li class="nav-item" role="none"><a href="#home" class="nav-link" tabindex="0"><i class="fas fa-home"></i>
+          Home</a></li>
+      <li class="nav-item" role="none"><a href="#about" class="nav-link" tabindex="0"><i class="fas fa-user"></i>
+          About</a></li>
+      <li class="nav-item" role="none"><a href="#resume" class="nav-link" tabindex="0"><i class="fas fa-file-alt"></i>
+          Resume</a></li>
+      <li class="nav-item" role="none"><a href="#portfolio" class="nav-link" tabindex="0"><i
+            class="fas fa-briefcase"></i> Portfolio</a></li>
+      <li class="nav-item" role="none"><a href="#services" class="nav-link" tabindex="0"><i class="fas fa-cogs"></i>
+          Services</a></li>
+      <li class="nav-item" role="none"><a href="#skills" class="nav-link" role="menuitem" tabindex="0"><i
+            class="fas fa-chart-line"></i> Skills</a></li>
+      <li class="nav-item" role="none"><a href="#contact" class="nav-link" role="menuitem" tabindex="0"><i
+            class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Sections  -->
+  <main class="content">
+
+    <!-- Home Section  -->
+    <section id="home"
+      class="d-flex flex-column justify-content-center align-items-center vh-100 text-center text-white" tabindex="0">
+      <div class="container">
+        <h1 class="fw-bold mb-2 text-primary display-4">Ahmed Raza</h1>
+        <p class="fs-4 mb-2">Frontend Developer | Learning WordPress</p>
+        <p class="fst-italic mb-4">"Designing with passion. Developing with purpose."</p>
+        <p class="mb-4 px-md-5">
+          I help businesses and individuals bring their ideas to life with visually appealing and fully responsive
+          websites.
+          I specialize in combining creativity with code using the latest web technologies.
+        </p>
+        <div class="row justify-content-center mb-4">
+          <div class="col-auto">
+            <span class="badge bg-primary fs-6 m-1"><i class="fab fa-html5 me-1"></i> HTML</span>
+            <span class="badge bg-primary fs-6 m-1"><i class="fab fa-css3-alt me-1"></i> CSS</span>
+            <span class="badge bg-primary fs-6 m-1"><i class="fab fa-js me-1"></i> JavaScript</span>
+            <span class="badge bg-primary fs-6 m-1"><i class="fab fa-bootstrap me-1"></i> Bootstrap</span>
+            <span class="badge bg-primary fs-6 m-1"><i class="fab fa-wordpress me-1"></i> WordPress</span>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <a href="#portfolio" class="btn btn-primary btn-lg px-4">View Portfolio</a>
+          <a href="#contact" class="btn btn-outline-primary btn-lg px-4">Hire Me</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about" class="about section py-5" tabindex="0" aria-labelledby="about-title" style="color: #f0f0f0;">
+      <div class="container" data-aos="fade-up">
+        <h2 id="about-title" class="text-center display-5 fw-bold mb-5" style="color: #1e90ff;">About Me</h2>
+        <div class="d-flex flex-wrap justify-content-center align-items-start gap-4">
+
+
+          <!-- Image -->
+          <div
+            style="flex: 1 1 320px; max-width: 320px; border-left: 6px solid #1e90ff; background-color: #111; padding: 1rem; border-radius: 8px;">
+            <img src="Professioanl-pic/Ahmed's_Pic.jpeg" alt="Ahmed Raza"
+              style="width: 100%; height: auto; border-radius: 8px; object-fit: cover;" />
+          </div>
+
+          <!-- Content -->
+          <div
+            style="flex: 2 1 500px; border-left: 6px solid #1e90ff; background-color: #111; padding: 1.5rem; border-radius: 8px;">
+            <h3 class="text-uppercase fw-bold mb-4" style="color: #1e90ff;">Frontend Web Developer</h3>
+            <p style="font-weight: 500; line-height: 1.6; color: #ddd;">
+              I build modern, responsive, and high-performance websites using HTML, CSS, JavaScript, Bootstrap, and
+              jQuery. I’m expanding my skills into WordPress to create dynamic web applications that scale effortlessly.
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem;">
+
+              <div
+                style="flex: 1 1 45%; background-color: #222; padding: 10px; border-left: 4px solid #1e90ff; border-radius: 5px;">
+                <strong>Birthday:</strong><br>1 Nov 2008
+              </div>
+
+              <div
+                style="flex: 1 1 45%; background-color: #222; padding: 10px; border-left: 4px solid #1e90ff; border-radius: 5px;">
+                <strong>Website:</strong><br>Coming Soon
+              </div>
+
+              <div
+                style="flex: 1 1 45%; background-color: #222; padding: 10px; border-left: 4px solid #1e90ff; border-radius: 5px;">
+                <strong>Phone:</strong><br><a href="tel:+923347127234" style="color: #ddd; text-decoration: none;">+92
+                  3347127234</a>
+              </div>
+
+              <div
+                style="flex: 1 1 45%; background-color: #222; padding: 10px; border-left: 4px solid #1e90ff; border-radius: 5px;">
+                <strong>City:</strong><br>Karachi
+              </div>
+
+              <div
+                style="flex: 1 1 45%; background-color: #222; padding: 10px; border-left: 4px solid #1e90ff; border-radius: 5px;">
+                <strong>Age:</strong><br>17
+              </div>
+
+              <div
+                style="flex: 1 1 45%; background-color: #222; padding: 10px; border-left: 4px solid #1e90ff; border-radius: 5px;">
+                <strong>Class:</strong><br>Intermediate
+              </div>
+
+              <div
+                style="flex: 1 1 45%; background-color: #222; padding: 10px; border-left: 4px solid #1e90ff; border-radius: 5px;">
+                <strong>Email:</strong><br><a href="mailto:ahmedraza09170@gmail.com"
+                  style="color: #ddd; text-decoration: none;">ahmedraza09170@gmail.com</a>
+              </div>
+
+              <div
+                style="flex: 1 1 45%; background-color: #222; padding: 10px; border-left: 4px solid #28a745; border-radius: 5px;">
+                <strong>Freelance:</strong><br><span style="color: #28a745; font-weight: 700;">Available</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume section py-5">
+      <div class="container section-title text-center mb-5" data-aos="fade-up">
+        <h2 class="fw-bold mb-3 text-primary">Resume</h2>
+        <p><strong>Passionate about creating clean and responsive web designs, I strive to deliver user-friendly digital
+            experiences. Always eager to learn and grow in the field of web development.</strong></p>
+      </div>
+
+      <div class="container">
+        <div class="row position-relative">
+          <!-- Left Side -->
+          <div class="col-lg-6 pe-lg-5 border-end border-2" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title text-primary">Summary</h3>
+            <div class="resume-item pb-3">
+              <h4>Ahmed Raza</h4>
+              <p><em>Creative and detail-oriented Front-end Web Developer with experience in building responsive and
+                  user-friendly websites. Skilled in HTML, CSS, JavaScript, Bootstrap, and jQuery. Currently learning
+                  WordPress to create dynamic web solutions. Passionate about problem-solving and delivering seamless
+                  user experiences.</em></p>
+            </div>
+
+            <hr class="resume-divider">
+
+            <h3 class="resume-title text-primary">Education</h3>
+            <div class="resume-item pb-3">
+              <h4 class="fw-semibold">Matriculation (General Science)</h4>
+              <h5>May 2023 – April 2025</h5>
+              <p><em>Government Boys High School Khadro, District Sanghar</em></p>
+              <p>Successfully completed Matriculation in April 2025.</p>
+            </div>
+
+            <div class="resume-item pb-3">
+              <h4 class="fw-semibold">Intermediate (Pre-Engineering )</h4>
+              <h5>May 2025 – Present</h5>
+              <p><em>Government Boys High School Khadro, District Sanghar</em></p>
+              <p>Currently pursuing Intermediate studies after re-admission in May 2025.</p>
+            </div>
+
+            <hr class="resume-divider">
+
+            <h3 class="resume-title text-primary">Contact Information</h3>
+            <div class="resume-item pb-0">
+              <ul class="list-unstyled mb-0">
+                <li><i class="bi bi-geo-alt-fill me-2 text-primary"></i>Hyderabad , Pakistan</li>
+                <li><i class="bi bi-telephone-fill me-2 text-primary"></i>(+92) 3347127234</li>
+                <li><i class="bi bi-envelope-fill me-2 text-primary"></i><a href="mailto:ahmedraza09170@gmail.com"
+                    class="text-decoration-none text-primary">ahmedraza09170@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Center Vertical Line -->
+          <div
+            class="d-none d-lg-block position-absolute top-0 bottom-0 start-50 translate-middle-x border-start border-primary border-3"
+            style="height: 100%; z-index: 1;"></div>
+
+          <!-- Right Side -->
+          <div class="col-lg-6 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="resume-title text-primary">Professional Experience</h3>
+
+            <div class="resume-item pb-3">
+              <h4 class="fw-bold">Front-end Web Developer</h4>
+              <h5>September 2024 – December 2024</h5>
+              <p><em>HiskyTeach — Remote</em></p>
+              <ul>
+                <li>Learned core web development concepts with hands-on practice.</li>
+                <li>Built small website components as assignment</li>
+                <li>Improved frontend skills with feedback from mentors </li>
+              </ul>
+            </div>
+            <hr class="resume-divider">
+
+            <div class="resume-item pb-3">
+              <h4 class="fw-bold">Front-end Web Developer</h4>
+              <h5>August 2024 – December 2024</h5>
+              <p><em>Code Alpha — Remote</em></p>
+
+              <ul>
+                <li>Developed a fully responsive **To-Do List App** using HTML, CSS, Bootstrap, and JavaScript.</li>
+                <li>Created a **Task Manager Interface** with add/delete/edit functionalities. </li>
+                <li>Ensured full mobile responsiveness and modern UI layout using Bootstrap Grid System.</li>
+              </ul>
+            </div>
+
+            <hr class="resume-divider">
+
+            <h3 class="resume-title text-primary">Skills</h3>
+            <div class="resume-item pb-3">
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item badge bg-primary text-white mx-1 my-1 px-3 py-2">HTML</li>
+                <li class="list-inline-item badge bg-primary text-white mx-1 my-1 px-3 py-2">CSS</li>
+                <li class="list-inline-item badge bg-primary text-white mx-1 my-1 px-3 py-2">JavaScript</li>
+                <li class="list-inline-item badge bg-primary text-white mx-1 my-1 px-3 py-2">Bootstrap</li>
+                <li class="list-inline-item badge bg-primary text-white mx-1 my-1 px-3 py-2">jQuery</li>
+                <li class="list-inline-item badge bg-primary text-white mx-1 my-1 px-3 py-2">React.js (Learning)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Portfolio Section -->
+
+    <section id="portfolio" class="portfolio py-5" tabindex="0" aria-labelledby="portfolio-title">
+      <div class="container" data-aos="fade-up">
+        <h2 id="portfolio-title" class="text-center text-primary mb-5 fw-bold display-5">My Work</h2>
+
+        <div class="row g-4">
+<div class="row g-4">
+
+  <!-- Project 1: E-commerce Platform -->
+  <article class="col-md-6 col-lg-4">
+    <div class="card shadow-sm h-100 border-0 hover-shadow">
+      <img src="Images/e-plaform.png" class="card-img-top" alt="E-commerce Platform Screenshot">
+      <div class="card-body">
+        <h3 class="card-title text-primary fw-semibold h5">Outstrix Shop – E-Commerce Platform</h3>
+        <p class="card-text">
+          A modern and responsive e-commerce website featuring product listings, add-to-cart functionality, and a
+          sleek minimal design for a smooth shopping experience.
+        </p>
+        <a href="https://ahmedraza09170-create.github.io/e-commerce-platform/" target="_blank"
+          rel="noopener noreferrer" class="btn btn-outline-primary w-100">
+          <i class="fas fa-arrow-right me-1"></i> View Project
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 2: Clothing Brand Website -->
+  <article class="col-md-6 col-lg-4">
+    <div class="card shadow-sm h-100 border-0 hover-shadow">
+      <img src="Images/Clothing.png" class="card-img-top" alt="Clothing Brand Website Screenshot">
+      <div class="card-body">
+        <h3 class="card-title text-primary fw-semibold h5">Outstrix – Clothing Brand Website</h3>
+        <p class="card-text">
+          A stylish fashion brand website built with HTML, CSS, and Bootstrap showcasing minimalist streetwear and a
+          clean shopping interface.
+        </p>
+        <a href="https://ahmedraza09170-create.github.io/Outstrix-Clothing-Brand/" target="_blank"
+          rel="noopener noreferrer" class="btn btn-outline-primary w-100">
+          <i class="fas fa-arrow-right me-1"></i> View Project
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 3: To-Do List App -->
+  <article class="col-md-6 col-lg-4">
+    <div class="card shadow-sm h-100 border-0 hover-shadow">
+      <img src="Images/To-Do-List.png" class="card-img-top" alt="To-Do List App Screenshot">
+      <div class="card-body">
+        <h3 class="card-title text-primary fw-semibold h5">Taskify – To-Do List App</h3>
+        <p class="card-text">
+          A lightweight task management app to add, delete, and track daily tasks with a clean UI for better
+          productivity.
+        </p>
+        <a href="https://ahmedraza09170-create.github.io/To-Do-List-/" target="_blank"
+          rel="noopener noreferrer" class="btn btn-outline-primary w-100">
+          <i class="fas fa-arrow-right me-1"></i> View Project
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 4: Task Manager -->
+  <article class="col-md-6 col-lg-4">
+    <div class="card shadow-sm h-100 border-0 hover-shadow">
+      <img src="Images/task-manager.png" class="card-img-top" alt="Task Manager Screenshot">
+      <div class="card-body">
+        <h3 class="card-title text-primary fw-semibold h5">WorkFlow – Task Manager</h3>
+        <p class="card-text">
+          A dark-themed task manager where users can add, complete, and remove tasks. Built for simplicity and focus
+          using HTML, CSS, and JS.
+        </p>
+        <a href="https://ahmedraza09170-create.github.io/Task-Manager/" target="_blank"
+          rel="noopener noreferrer" class="btn btn-outline-primary w-100">
+          <i class="fas fa-arrow-right me-1"></i> View Project
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 5: Calculator -->
+  <article class="col-md-6 col-lg-4">
+    <div class="card shadow-sm h-100 border-0 hover-shadow">
+      <img src="Images/calculator.png" class="card-img-top" alt="Calculator Screenshot">
+      <div class="card-body">
+        <h3 class="card-title text-primary fw-semibold h5">Calcify – Simple Calculator</h3>
+        <p class="card-text">
+          A simple, interactive calculator that performs basic arithmetic operations with a clean and responsive
+          design.
+        </p>
+        <a href="https://ahmedraza09170-create.github.io/Calculator/" target="_blank"
+          rel="noopener noreferrer" class="btn btn-outline-primary w-100">
+          <i class="fas fa-arrow-right me-1"></i> View Project
+        </a>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="services" class="services py-5" tabindex="0" aria-labelledby="services-title">
+      <div class="container text-center" data-aos="fade-up">
+        <h2 id="services-title" class="mb-5 text-primary fw-bold display-4">My Services</h2>
+
+        <div class="row g-4 justify-content-center">
+
+          <!-- Service 1 -->
+          <article class="col-md-4">
+            <div class="card bg-white text-dark h-100 p-4 shadow-sm border-0" tabindex="0"
+              aria-label="Responsive Web Design">
+              <i class="fas fa-desktop fa-3x text-primary mb-3"></i>
+              <h3 class="h5 fw-bold text-primary">Responsive Web Design</h3>
+              <p class="mb-0">Modern, mobile-friendly websites using HTML, CSS & Bootstrap for all screen sizes.</p>
+            </div>
+          </article>
+
+          <!-- Service 2 -->
+          <article class="col-md-4">
+            <div class="card bg-white text-dark h-100 p-4 shadow-sm border-0" tabindex="0"
+              aria-label="Template Customization">
+              <i class="fas fa-paint-brush fa-3x text-primary mb-3"></i>
+              <h3 class="h5 fw-bold text-primary">Template Customization</h3>
+              <p class="mb-0">Tailoring Bootstrap templates to match your brand, style, and content needs.</p>
+            </div>
+          </article>
+
+          <!-- Service 3 -->
+          <article class="col-md-4">
+            <div class="card bg-white text-dark h-100 p-4 shadow-sm border-0" tabindex="0"
+              aria-label="Frontend Fixes & Effects">
+              <i class="fas fa-tools fa-3x text-primary mb-3"></i>
+              <h3 class="h5 fw-bold text-primary">Frontend Fixes & Effects</h3>
+              <p class="mb-0">Bug fixing, UI polish, animation effects, and interactivity with JavaScript/jQuery.</p>
+            </div>
+          </article>
+
+          <!-- Service 4 -->
+          <article class="col-md-4">
+            <div class="card bg-white text-dark h-100 p-4 shadow-sm border-0" tabindex="0"
+              aria-label="One Page Websites">
+              <i class="fas fa-layer-group fa-3x text-primary mb-3"></i>
+              <h3 class="h5 fw-bold text-primary">One Or Multiple Pages Websites</h3>
+              <p class="mb-0">Clean and fast one-page websites perfect for startups, portfolios, and events.</p>
+            </div>
+          </article>
+
+          <!-- Service 5 -->
+          <article class="col-md-4">
+            <div class="card bg-white text-dark h-100 p-4 shadow-sm border-0" tabindex="0"
+              aria-label="Speed Optimization & UI Cleanup">
+              <i class="fas fa-tachometer-alt fa-3x text-primary mb-3"></i>
+              <h3 class="h5 fw-bold text-primary">Speed Optimization</h3>
+              <p class="mb-0">Boosting page speed, reducing load time, and refining UI for better performance.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Sections -->
+
+    <section id="skills" class="py-5">
+      <div class="container">
+        <h2 class="text-center display-5 fw-bold mb-5 text-primary">My Skills</h2>
+
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <!-- HTML Skill -->
+            <div class="skill-title d-flex align-items-center justify-content-between mb-1">
+              <div class="d-flex align-items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0d6efd">
+                  <rect x="4" y="4" width="16" height="16" rx="4" />
+                </svg>
+                <span>HTML</span>
+              </div>
+              <span class="percent-text">99.99%</span>
+            </div>
+            <div class="progress mb-4" style="height: 28px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 99.99%;" aria-valuenow="99"
+                aria-valuemin="0" aria-valuemax="100">99.99%</div>
+            </div>
+
+            <!-- CSS Skill -->
+            <div class="skill-title d-flex align-items-center justify-content-between mb-1">
+              <div class="d-flex align-items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0d6efd">
+                  <rect x="4" y="4" width="16" height="16" rx="4" />
+                </svg>
+                <span>CSS</span>
+              </div>
+              <span class="percent-text">90%</span>
+            </div>
+
+            <div class="progress mb-4" style="height: 28px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;" aria-valuenow="90"
+                aria-valuemin="0" aria-valuemax="100">90%</div>
+            </div>
+
+            <!-- JavaScript Skill -->
+            <div class="skill-title d-flex align-items-center justify-content-between mb-1">
+              <div class="d-flex align-items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0d6efd">
+                  <rect x="4" y="4" width="16" height="16" rx="4" />
+                </svg>
+                <span>JavaScript</span>
+              </div>
+              <span class="percent-text">70%</span>
+            </div>
+            <div class="progress mb-4" style="height: 28px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 70%;" aria-valuenow="70"
+                aria-valuemin="0" aria-valuemax="100">70%</div>
+            </div>
+
+            <!-- Bootstrap Skill -->
+            <div class="skill-title d-flex align-items-center justify-content-between mb-1">
+              <div class="d-flex align-items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0d6efd">
+                  <rect x="4" y="4" width="16" height="16" rx="4" />
+                </svg>
+                <span>Bootstrap</span>
+              </div>
+              <span class="percent-text">90%</span>
+            </div>
+            <div class="progress mb-4" style="height: 28px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;" aria-valuenow="90"
+                aria-valuemin="0" aria-valuemax="100">90%</div>
+            </div>
+
+            <!-- jQuery Skill -->
+            <div class="skill-title d-flex align-items-center justify-content-between mb-1">
+              <div class="d-flex align-items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0d6efd">
+                  <rect x="4" y="4" width="16" height="16" rx="4" />
+                </svg>
+                <span>jquery</span>
+              </div>
+              <span class="percent-text">70%</span>
+            </div>
+            <div class="progress mb-4" style="height: 28px;">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 70%;" aria-valuenow="70"
+                aria-valuemin="0" aria-valuemax="100">70%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5" style="color: #f0f0f0;" tabindex="0">
+      <div class="container">
+        <h2 class="text-center fw-bold mb-5" style="color: #1e90ff; font-size: 2.5rem;">Contact Me</h2>
+
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form action="https://formsubmit.co/ahmedraza09170@gmail.com" method="POST" id="contactForm">
+              <!-- Disable captcha -->
+              <input type="hidden" name="_captcha" value="false">
+
+              <!-- Redirect after success -->
+
+              <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+                  required />
+              </div>
+
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject"
+                  required />
+              </div>
+
+              <div class="mb-4">
+                <label for="message" class="form-label">Your Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5"
+                  placeholder="Type your message here..." required></textarea>
+              </div>
+
+              <div class="text-center d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
+                <button type="submit" class="btn btn-primary btn-lg px-5">Send Message</button>
+                <a href="https://wa.me/923347127234" target="_blank" class="btn btn-success btn-lg px-5">WhatsApp:
+                  <b>03347127234</b></a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer  -->
+    <footer class="bg-dark text-light py-5 mt-5 border-top border-secondary">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <!-- Left Side: Name & Description -->
+          <div class="col-md-6 mb-4 mb-md-0 text-center text-md-start">
+            <h4 class="fw-bold text-primary">Ahmed Raza</h4>
+            <p class="mb-2">
+              Frontend Developer focused on building fast, responsive, and user-friendly websites.
+            </p>
+            <p class="mb-0 small">&copy; 2025 Ahmed Raza. All rights reserved.</p>
+          </div>
+
+          <!-- Right Side: Contact Info -->
+          <div class="col-md-5 text-center text-md-end">
+            <h5 class="fw-semibold mb-3 text-primary">Get in Touch</h5>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <i class="bi bi-envelope-fill text-primary me-2"></i>
+                <a href="mailto:ahmedraza09170@email.com" class="text-light text-decoration-none">
+                  ahmedraza09170@gmail.com
+                </a>
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-whatsapp text-success me-2"></i>
+                <a href="https://wa.me/+923347127234" target="_blank" class="text-light text-decoration-none">
+                  +92 334 7127234
+                </a>
+              </li>
+              <li>
+                <i class="bi bi-linkedin text-info me-2"></i>
+                <a href="www.linkedin.com/in/iam-ahmedraza" target="_blank"
+                  class="text-light text-decoration-none">
+                  linkedin.com/in/ahmedraza-frontend
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+
+</html>
