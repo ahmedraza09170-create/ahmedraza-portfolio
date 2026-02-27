@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ahmed Raza | Creative Frontend Dev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0b3d2e;
+            --accent: #d4af37;
+            --glass: rgba(255, 255, 255, 0.1);
+            --bg-light: #ffffff;
+            --text-dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            box-shadow: none !important;
+            outline: none;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--primary) 0%, #052119 100%);
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            color: white;
+            padding: 30px 20px;
+            z-index: 1000;
+        }
+
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .sidebar img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--glass);
+            color: var(--accent);
+            transform: translateX(10px);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+        }
+
+        .typed-cursor {
+            color: var(--accent);
+        }
+
+        .card-custom {
+            border: none;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: 0.4s;
+            overflow: hidden;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-badge {
+            background: #f1f3f5;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 5px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .skill-badge:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            background-color: var(--accent);
+        }
+
+        .btn-main {
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+
+        .form-control:focus {
+            box-shadow: none !important;
+            outline: none;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: #0d6efd;
+            transform: translateY(-5px);
+        }
+
+        .tracking-widest {
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 991px) {
+            .sidebar {
+                height: auto;
+                position: relative;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                transition: 0.4s ease-in-out;
+                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            main {
+                padding: 20px !important;
+            }
+        }
+
+        footer {
+            border-top: 2px solid #dee2e6;
+        }
+
+        .footer-link {
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .footer-link:hover {
+            color: #0d6efd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <button class="btn d-lg-none position-fixed d-flex align-items-center justify-content-center" type="button"
+                id="mobileToggle"
+                style="top: 20px; right: 20px; z-index: 9999; width: 45px; height: 45px; background-color: var(--primary); border: 2px solid var(--accent); color: white;">
+                <i class="bi bi-list fs-3"></i>
+            </button>
+            <aside id="sidebar" class="col-12 col-lg-3 col-xl-2 sidebar text-center">
+                <div class="profile-img-container mb-3">
+                    <img src="Professioanl-pic/Ahmed's_Pic.jpeg" alt="Ahmed Raza">
+                </div>
+                <h4 class="fw-bold">Ahmed Raza</h4>
+                <div class="mb-4 small opacity-75">Front-End Developer</div>
+
+                <nav class="nav flex-column text-start" id="sidebar-nav">
+                    <a class="nav-link active" href="#hero"><i class="bi bi-house-door me-2"></i> Home</a>
+                    <a class="nav-link" href="#about"><i class="bi bi-person me-2"></i> Journey</a>
+                    <a class="nav-link" href="#skills"><i class="bi bi-cpu me-2"></i> Tech Stack</a>
+                    <a class="nav-link" href="#projects"><i class="bi bi-rocket-takeoff me-2"></i> Portfolio</a>
+                    <a class="nav-link" href="#contact"><i class="bi bi-chat-dots me-2"></i> Let's Talk</a>
+                </nav>
+            </aside>
+
+            <main class="col-12 col-lg-9 col-xl-10 p-lg-5 ">
+
+                <!-- Header Section -->
+                <section id="hero" class="py-5 d-flex flex-column justify-content-center" style="min-height: 80vh;"
+                    data-aos="zoom-in">
+                    <div class="hero-content">
+                        <p class="text-accent fw-bold mb-0" style="color:var(--accent); letter-spacing: 2px;">WELCOME TO
+                            MY WORLD</p>
+                        <h1 class="hero-title mb-2">Ahmed <span style="color:var(--primary)">Raza</span></h1>
+                        <h2 class="display-6 mb-4 text-dark">A Creative <span id="typed"
+                                style="color:var(--accent)"></span></h2>
+
+                        <p class="lead text-muted mb-4" style="max-width: 800px; line-height: 1.8;">
+                            I am a dedicated college student and Creative Web Programmer who began my coding journey in
+                            2024. Focused on building clean and modern interfaces, I have developed a strong command
+                            over HTML5, CSS3, JavaScript, Bootstrap, and jQuery. I take pride in bridging the gap
+                            between complex logic and elegant design, ensuring that every line of code contributes to a
+                            seamless user experience
+                        </p>
+
+                        <div class="d-flex gap-3 mt-2">
+                            <a href="#projects" class="btn btn-main shadow-lg">
+                                Explore My Projects <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+                            <a href="#contact" class="btn btn-outline-dark rounded-pill px-4 d-flex align-items-center">
+                                Let's Collaborate
+                            </a>
+                        </div>
+
+                        <div class="mt-5 d-flex gap-4 fs-4 text-secondary">
+                            <a href="#" class="text-reset hover-accent"><i class="bi bi-github"></i></a>
+                            <a href="#" class="text-reset hover-accent"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="text-reset hover-accent"><i class="bi bi-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section id="about" class="py-5 bg-light">
+                    <div class="container">
+
+                        <!-- Section Header -->
+                        <div class="text-center mb-5">
+                            <h6 class="text-primary fw-bold text-uppercase">About Me</h6>
+                            <h2 class="fw-bold display-5">The Person Behind The Code</h2>
+                            <p class="text-muted col-lg-8 mx-auto">
+                                A student transforming curiosity into real-world web development skills through
+                                mentorship,
+                                structured learning, and consistent practice.
+                            </p>
+                        </div>
+
+                        <div class="row g-4 align-items-stretch">
+
+                            <!-- Left Side - Main Story -->
+                            <div class="col-lg-8">
+                                <div class="card border-0 shadow rounded-4 h-100">
+                                    <div class="card-body p-4 p-lg-5">
+
+                                        <h4 class="fw-bold mb-3">My Journey</h4>
+
+                                        <p class="text-muted">
+                                            I am a student who began my web development journey with absolutely no prior
+                                            knowledge of
+                                            programming. In the beginning, even basic coding concepts felt unfamiliar
+                                            and challenging.
+                                            My direction became clear when I started learning under the mentorship of
+                                            <a href="https://www.linkedin.com/in/nazarmuhammad91/" target="_blank"
+                                                class="fw-bold text-decoration-none text-primary">
+                                                Nazar Muhammad
+                                            </a>,
+                                            a Software Engineer professionally based in Karachi, Pakistan.
+                                        </p>
+
+                                        <p class="text-muted">
+                                            Under his step-by-step guidance, I was introduced to
+                                            <a href="https://www.w3schools.com/" target="_blank"
+                                                class="fw-semibold text-decoration-none text-primary">
+                                                W3Schools
+                                            </a>
+                                            to build a strong foundation in HTML, CSS, and JavaScript. To deepen my
+                                            understanding,
+                                            I was encouraged to learn from
+                                            <a href="https://www.youtube.com/@CodeWithHarry" target="_blank"
+                                                class="fw-semibold text-decoration-none text-primary">
+                                                Code With Harry
+                                            </a>
+                                            and explore selected tutorials from
+                                            <span class="fw-semibold">Apna College</span>.
+                                            These resources helped me strengthen my logical thinking, understand
+                                            development structure,
+                                            and apply concepts in practical projects.
+                                        </p>
+
+                                        <p class="text-muted">
+                                            Through continuous mentorship, structured learning, and consistent practice,
+                                            I gradually
+                                            transformed from a complete beginner into a developer capable of building
+                                            real-world and
+                                            community-based projects. More importantly, I learned how to think like a
+                                            developer —
+                                            focusing on clean code, problem-solving, and professional execution rather
+                                            than just
+                                            writing syntax.
+                                        </p>
+
+                                        <p class="text-muted mb-0">
+                                            Today, as a student and growing web developer, I remain committed to
+                                            continuous improvement,
+                                            skill development, and building meaningful digital solutions that create
+                                            real impact.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Side - Stats & Focus -->
+                            <div class="col-lg-4">
+                                <div class="d-flex flex-column gap-4 h-100">
+
+                                    <!-- Stats -->
+                                    <div class="row g-3">
+                                        <div class="col-6">
+                                            <div class="card text-center border-0 shadow-sm rounded-4 h-100">
+                                                <div class="card-body py-4">
+                                                    <h3 class="fw-bold text-primary mb-1">08+</h3>
+                                                    <small class="text-muted text-uppercase">Projects Completed</small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="card text-center border-0 shadow-sm rounded-4 h-100">
+                                                <div class="card-body py-4">
+                                                    <h3 class="fw-bold text-primary mb-1">02+</h3>
+                                                    <small class="text-muted text-uppercase">Years of Learning</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Core Focus -->
+                                    <div class="card border-0 shadow-sm rounded-4 flex-grow-1">
+                                        <div class="card-body p-4">
+                                            <h6 class="fw-bold mb-3 text-uppercase text-muted">Core Focus</h6>
+                                            <ul class="list-unstyled mb-0 small text-muted">
+                                                <li class="mb-2">• Frontend Web Development</li>
+                                                <li class="mb-2">• Logic Building & Clean Code</li>
+                                                <li class="mb-2">• Real-World Project Execution</li>
+                                                <li class="mb-2">• Continuous Learning & Growth</li>
+                                                <li class="mb-2">• User Experience & Design Awareness</li>
+                                                <li class="mb-2">• Responsive & Mobile-First Design</li>
+                                                <li class="mb-2">• Performance Optimization</li>
+                                                <li class="mb-2">• Cross-Browser Compatibility</li>
+                                                <li>• Problem Solving & Critical Thinking</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skill Section -->
+                <section id="skills" class="py-5" data-aos="fade-up">
+                    <h2 class="fw-bold mb-4">Technical Expertise</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card-custom p-4 h-100">
+                                <h5 class="mb-4 text-primary fw-bold"><i class="bi bi-stack me-2"></i>Technical Toolkit
+                                </h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <div class="skill-badge">HTML5</div>
+                                    <div class="skill-badge">CSS3</div>
+                                    <div class="skill-badge">JavaScript</div>
+                                    <div class="skill-badge">Bootstrap 5</div>
+                                    <div class="skill-badge">jQuery</div>
+                                    <div class="skill-badge">Python (Learning)</div>
+                                    <div class="skill-badge">Responsive Web Design</div>
+                                    <div class="skill-badge">Clean Code Logic</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card-custom p-4 h-100">
+                                <h5 class="mb-4 text-primary fw-bold"><i
+                                        class="bi bi-graph-up-arrow me-2"></i>Development Strengths</h5>
+
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <label class="fw-medium">Modern UI Architecture</label>
+                                        <span class="text-muted small">95%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 95%">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <label class="fw-medium">Interactive Logic (JS/jQuery)</label>
+                                        <span class="text-muted small">85%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 85%">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <label class="fw-medium">Responsive Frameworks</label>
+                                        <span class="text-muted small">90%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 90%">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <label class="fw-medium">Python Fundamentals</label>
+                                        <span class="text-muted small">Learning</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"
+                                            role="progressbar" style="width: 5%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Portfolio Section -->
+                <section id="projects" class="py-5 bg-light" data-aos="fade-up">
+                    <div class="container">
+
+                        <!-- Section Header -->
+                        <div class="text-center mb-5">
+                            <h6 class="text-primary fw-bold text-uppercase">Portfolio</h6>
+                            <h2 class="fw-bold display-5">My Projects & Creations</h2>
+                            <p class="text-muted col-lg-8 mx-auto">
+                                A showcase of my coding journey—from early experiments to real-world applications and
+                                business solutions.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+
+                            <!-- Project 1: Logic Calculator -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm rounded-4 h-100">
+                                    <img src="Images/calculator.png" class="card-img-top p-3" alt="Logic Calculator"
+                                        style="height: 200px; object-fit: contain;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="fw-bold">Logic Calculator</h5>
+                                        <p class="text-muted small">My first JavaScript project—a calculator focusing on
+                                            clean code and core JS logic.</p>
+                                        <div class="mt-auto">
+                                            <button class="btn btn-dark btn-sm px-3 w-100">Live Demo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 2: To-Do List App -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm rounded-4 h-100">
+                                    <img src="Images/todolist.png" class="card-img-top p-3" alt="To-Do List App"
+                                        style="height: 200px; object-fit: cover;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="fw-bold">To-Do List App</h5>
+                                        <p class="text-muted small">Task management app built with HTML, CSS, Bootstrap
+                                            & JavaScript logic.</p>
+                                        <div class="mt-auto">
+                                            <button class="btn btn-dark btn-sm px-3 w-100">Live Demo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 3: Coffee Shop Website -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm rounded-4 h-100">
+                                    <img src="Images/coffee-shop.png" class="card-img-top p-3" alt="Coffee Shop Website"
+                                        style="height: 200px; object-fit: cover;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="fw-bold">Coffee Shop Website</h5>
+                                        <p class="text-muted small">HTML, CSS, Bootstrap & JS project featuring
+                                            navigation, menu & interactive design.</p>
+                                        <div class="mt-auto">
+                                            <button class="btn btn-dark btn-sm px-3 w-100">Live Demo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 4: Water Bottle Business Website -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm rounded-4 h-100">
+                                    <img src="Images/water-business.png" class="card-img-top p-3"
+                                        alt="Water Bottle Website" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="fw-bold">Water Bottle Business</h5>
+                                        <p class="text-muted small">A business site with HTML, CSS, JS & Bootstrap
+                                            showcasing products and services.</p>
+                                        <div class="mt-auto">
+                                            <button class="btn btn-dark btn-sm px-3 w-100">Live Demo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 5: Learners Academy Website -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm rounded-4 h-100">
+                                    <img src="Images/learnersacademy.png" class="card-img-top p-3"
+                                        alt="Learners Academy" style="height: 200px; object-fit: contain;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="fw-bold">Learners Academy</h5>
+                                        <p class="text-muted small">Official website for Learners Academy Hyderabad
+                                            using HTML, CSS, JS, Bootstrap & Google Forms/App Script integration.</p>
+                                        <div class="mt-auto">
+                                            <a href="https://learnersacademy.ac.pk" target="_blank"
+                                                class="btn btn-dark btn-sm px-3 w-100">Live Demo</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 6: Simple Blog Website -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm rounded-4 h-100">
+                                    <img src="Images/blog.png" class="card-img-top p-3" alt="Blog Website"
+                                        style="height: 200px; object-fit: cover;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="fw-bold">Simple Blog Website</h5>
+                                        <p class="text-muted small">Clean blog platform focusing on semantic HTML,
+                                            readable CSS & SEO-friendly structure.</p>
+                                        <div class="mt-auto">
+                                            <button class="btn btn-dark btn-sm px-3 w-100">Live Demo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 7: Spiritual Heritage Project -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm rounded-4 h-100 position-relative">
+                                    <div class="position-absolute top-0 end-0 m-2"><span class="badge bg-primary">In
+                                            Progress</span></div>
+                                    <img src="Images/spiritual-dargah.png" class="card-img-top p-3"
+                                        alt="Spiritual Dargah Website" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="fw-bold">Spiritual Heritage Project</h5>
+                                        <p class="text-muted small">Developing a digital presence for a local spiritual
+                                            site with modern UI & responsive layout.</p>
+                                        <div class="mt-auto">
+                                            <button class="btn btn-dark btn-sm px-3 w-100">View Project</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project 8: Simple E-Commerce Platform -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card border-0 shadow-sm rounded-4 h-100">
+                                    <img src="Images/e-commerce.png" class="card-img-top p-3" alt="E-Commerce Platform"
+                                        style="height: 200px; object-fit: cover;">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="fw-bold">Simple E-Commerce Platform</h5>
+                                        <p class="text-muted small">Single-page product platform with add-to-cart,
+                                            WhatsApp integration, search, and responsive design using HTML, CSS & JS.
+                                        </p>
+                                        <div class="mt-auto">
+                                            <button class="btn btn-dark btn-sm px-3 w-100">View Project</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <!-- Contact Section -->
+                <section id="contact" class="py-5" data-aos="fade-up">
+                    <div class="card-custom bg-dark text-white p-5">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h2 class="fw-bold mb-4">Let's Connect!</h2>
+                                <p class="opacity-75">I'm always open to discussing new projects, creative ideas, or
+                                    opportunities to be part of your visions.</p>
+                                <div class="mt-4">
+                                    <p><i class="bi bi-envelope-at me-2 text-primary"></i> ahmedraza09170@gmail.com</p>
+                                    <p><i class="bi bi-linkedin me-2 text-primary"></i> linkedin.com/in/iam-ahmedraza
+                                    </p>
+                                    <p><i class="bi bi-whatsapp me-2 text-primary"></i> +92 3347127234</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <form id="whatsappForm">
+                                    <div class="mb-3">
+                                        <input type="text" id="userName" class="form-control bg-transparent text-white"
+                                            placeholder="Your Name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" id="userEmail"
+                                            class="form-control bg-transparent text-white" placeholder="Email Address"
+                                            required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <textarea id="userMsg" class="form-control bg-transparent text-white" rows="4"
+                                            placeholder="Your Message" required></textarea>
+                                    </div>
+                                    <button type="button" onclick="sendToWhatsApp()" id="submitBtn"
+                                        class="btn btn-primary w-100 py-2 fw-bold d-flex align-items-center justify-content-center">
+                                        <span id="btnText">Send to WhatsApp</span>
+                                        <span id="btnSpinner" class="spinner-border spinner-border-sm ms-2 d-none"
+                                            role="status" aria-hidden="true"></span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Footer Section -->
+                <footer class="bg-light text-dark pt-5 pb-3 mt-5 border-top">
+                    <div class="container">
+
+                        <!-- Social Links -->
+                        <div class="d-flex justify-content-center gap-3 mb-3 flex-wrap">
+                            <a href="https://linkedin.com/in/iam-ahmedraza" target="_blank"
+                                class="btn btn-outline-primary btn-lg rounded-circle">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="https://wa.me/923347127234" target="_blank"
+                                class="btn btn-outline-success btn-lg rounded-circle">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=61580864977103" target="_blank"
+                                class="btn btn-outline-primary btn-lg rounded-circle">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            <a href="https://github.com/iam-ahmedraza" target="_blank"
+                                class="btn btn-outline-dark btn-lg rounded-circle">
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </div>
+
+                        <!-- Footer Text -->
+                        <div class="text-center">
+                            <p class="mb-0 fw-semibold small text-uppercase">
+                                © 2026 | Designed & Developed by <span class="text-primary">Ahmed Raza</span>
+                            </p>
+                            <p class="small text-muted mb-0">Built with HTML, CSS, Bootstrap & JavaScript</p>
+                        </div>
+
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        // Initialize Animations
+        AOS.init({ duration: 800, once: true });
+
+        // Typed.js Animation
+        var typed = new Typed('#typed', {
+            strings: ['Creative Web Programmer', 'Modern UI Specialist', 'Logic & Clean Code Enthusiast'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+
+        // Smooth Scrolling
+        $('a.nav-link').on('click', function (event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top - 50
+                }, 800);
+            }
+        });
+
+        // Active Link on Scroll
+        $(window).scroll(function () {
+            var scrollDistance = $(window).scrollTop();
+            $('section').each(function (i) {
+                if ($(this).position().top <= scrollDistance + 100) {
+                    $('#sidebar-nav a.active').removeClass('active');
+                    $('#sidebar-nav a').eq(i).addClass('active');
+                }
+            });
+        }).scroll();
+        // Mobile Sidebar Toggle Logic
+        const mobileToggle = document.getElementById('mobileToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        mobileToggle.addEventListener('click', function () {
+            sidebar.classList.toggle('active');
+
+            const icon = this.querySelector('i');
+            icon.classList.toggle('bi-list');
+            icon.classList.toggle('bi-x-lg');
+        });
+
+
+        $('.nav-link').on('click', function () {
+            if (window.innerWidth < 992) {
+                sidebar.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.add('bi-list');
+                icon.classList.remove('bi-x-lg');
+            }
+        });
+        function sendToWhatsApp() {
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const msg = document.getElementById('userMsg').value;
+            const btn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('btnSpinner');
+            const btnText = document.getElementById('btnText');
+
+            if (name === "" || email === "" || msg === "") {
+                alert("Please fill all the fields before sending.");
+                return;
+            }
+
+            btn.disabled = true;
+            btnText.innerText = "Processing...";
+            spinner.classList.remove('d-none');
+
+            const phoneNumber = "923347127234";
+            const message = "Hello Ahmed!%0a%0a" +
+                "*Name:* " + name + "%0a" +
+                "*Email:* " + email + "%0a" +
+                "*Message:* " + msg;
+
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank').focus();
+
+                btn.disabled = false;
+                btnText.innerText = "Send to WhatsApp";
+                spinner.classList.add('d-none');
+            }, 1500);
+        }
+    </script>
+
+</body>
+
+</html>
